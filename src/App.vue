@@ -8,10 +8,13 @@
       <li><a href="https://twitter.com/vuejs" target="_blank">Restaurante Destacado</a></li>
       <li><a href="https://chat.vuejs.org" target="_blank">Contactos</a></li>
     </ul>
-    <home></home>
+  
+    <router-view></router-view>
+    
+   <!-- <home></home>
     <restaurante></restaurante>
     <top></top>
-    <contactos></contactos>
+    <contactos></contactos>-->
   </div>
 </template>
 
