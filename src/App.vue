@@ -3,10 +3,10 @@
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank">Home</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Restaurantes</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Restaurante Destacado</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Contactos</a></li>
+      <li><router-link to="/home">Home</router-link></li>
+      <li><router-link to="/restaurante">Restaurante</router-link></li>
+      <li><router-link :to="{name:'restaurante-destacado', params: {id: 16}}">Restaurante Destacado</router-link></li>
+      <li><router-link to="/contactos">Contactos</router-link></li>
     </ul>
   
     <router-view></router-view>
