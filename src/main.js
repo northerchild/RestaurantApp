@@ -10,7 +10,8 @@ Vue.use(VueRouter)
 const routes = [
 	{path: '/', component: Home},
 	{path: '/home', component: Home},
-	{path: '/restaurante', component: RestauranteList},
+	{path: '/editar-restaurante/:id', name:'editar-restaurante', component: RestauranteTop},
+	{path: '/restaurante', name:'restaurante-destacado', component: RestauranteList},
 	{path: '/top/:id', name:'restaurante-destacado', component: RestauranteTop},
 	{path: '/contactos', component: Contactos}
 ];
