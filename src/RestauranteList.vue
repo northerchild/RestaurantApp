@@ -4,7 +4,7 @@
 			<li v-for="restaurante in restaurantes">
 				<strong>{{restaurante.nombre}}</strong>
         <p>
-          <router-link :to="{name:'restaurante', params:{id: restaurante.id}}">Ver</router-link>
+          <router-link :to="{name:'ver-restaurante', params:{id: restaurante.id}}">Ver</router-link>
           <router-link :to="{name:'editar-restaurante', params:{id: restaurante.id}}">Editar</router-link>
         </p>
 			</li>
@@ -15,7 +15,7 @@
 <script>
 import axios from 'axios';	
 export default {
-  name: 'restauranteList',
+  name: 'restaurante-list',
   mounted(){
   	this.getRestaurantes();
   },

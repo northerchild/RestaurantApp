@@ -4,7 +4,7 @@
     <h1>{{ msg }}</h1>
     <ul>
       <li><router-link to="/home">Home</router-link></li>
-      <li><router-link to="/restaurante">Restaurante</router-link></li>
+      <li><router-link to="/restaurante-list">Restaurante</router-link></li>
       <li><router-link :to="{name:'restaurante-destacado', params: {id: 16}}">Restaurante Destacado</router-link></li>
       <li><router-link to="/contactos">Contactos</router-link></li>
     </ul>
