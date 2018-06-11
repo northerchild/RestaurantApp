@@ -7,7 +7,7 @@
       <li><router-link to="/restaurante-list">Restaurante</router-link></li>
       <li><router-link :to="{name:'restaurante-destacado', params: {id: 16}}">Restaurante Destacado</router-link></li>
       <li><router-link to="/contactos">Contactos</router-link></li>
-      <li><router-link :to="{name:'crear-restaurante'}">Crear Restaurante</router-link></li>
+      <li><router-link :to="{name:'crear-restaurante'}">Crear restaurante</router-link></li>
     </ul>
     <hr>
     <router-view></router-view>
