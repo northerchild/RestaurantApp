@@ -1,6 +1,6 @@
 <template>
-	<div id="restaurante-add">
-		<h2>Crear nuevo restaurante</h2>
+	<div id="restaurante-edit">
+		<h2>Editar restaurante</h2>
 		<form @submit.prevent="guardarRestaurante">
 			<p>
 				<label>Nombre</label>
@@ -31,31 +31,37 @@
 <script>
 	import axios from 'axios'
 	export default{
-		name:'restaurante-add',
+		name: 'restaurante-edit',
 		mounted(){
-
+			this.id = this.$route.params.id;
+			axios.get('http://localhost:8081/vueSPA/restaurantapp/slim/restaurantes-api.php/restaurante/'+this.id)
+				 .then((respuesta)=>{
+				 	this.restaurante = respuesta.data.data
+				 })
 		},
 		data(){
 			return {
-				restaurante:{
-					nombre:'',
-					direccion:'',
-					descripcion:'',
-					precio:'normal'
+				id: null,
+				restaurante: {
+					nombre: '',
+					direccion: '',
+					descripcion: '',
+					precio: 'normal'
 				}
 			}
 		},
-		methods:{
+		methods: {
 			guardarRestaurante(){
-				console.log(this.restaurante)
 				let router = this.$router;
+				let id = this.id;
+
 				let params = "json="+JSON.stringify(this.restaurante);
-				axios.post('http://localhost:8081/vueSPA/restaurantapp/slim/restaurantes-api.php/restaurantes', params)
+				axios.post('http://localhost:8081/vueSPA/restaurantapp/slim/restaurantes-api.php/update-restaurante/'+id, params)
 				     .then((respuesta)=>{
+				     	
 				     	if(respuesta.data.status == 'success'){
 				     		// redirigir
-				     		console.log(respuesta)
-				     		router.push('/restaurante-list');
+				     		router.push('/restaurante/'+id);
 				     	}
 
 				     })

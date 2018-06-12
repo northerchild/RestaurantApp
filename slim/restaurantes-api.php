@@ -59,7 +59,7 @@ $app->post("/restaurantes", function() use($db, $app) {
 
 	$json = $app->request->post("json");
 	$data = json_decode($json, true);
-
+	/*
 	$query = "INSERT INTO restaurantes VALUES(NULL,"
 			. "'{$data["nombre"]}',"
 			. "'{$data["direccion"]}',"
@@ -67,15 +67,15 @@ $app->post("/restaurantes", function() use($db, $app) {
 			. "'{$data["imagen"]}', "
 			. "'{$data["precio"]}'"
 			. ")";
-	/*
-	  $query = "INSERT INTO restaurantes VALUES(NULL,"
+	*/
+	 $query = "INSERT INTO restaurantes VALUES(NULL,"
 	  . "'{$app->request->post("nombre")}',"
 	  . "'{$app->request->post("direccion")}',"
 	  . "'{$app->request->post("descripcion")}',"
 	  . "NULL, "
 	  . "'{$app->request->post("precio")}'"
 	  . ")";
-	 */
+	 
 	$insert = $db->query($query);
 
 	if ($insert) {

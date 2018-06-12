@@ -7,6 +7,7 @@ import RestauranteTop from './RestauranteTop.vue'
 import Contactos from './Contactos.vue'
 import Restaurante from './Restaurante.vue'
 import RestauranteAdd from './RestauranteAdd.vue'
+import RestauranteEdit from './RestauranteEdit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,7 +18,8 @@ const routes = [
 	{path: '/restaurante', name:'restaurante', component: Restaurante},
 	{path: '/top/:id', name:'restaurante-destacado', component: RestauranteTop},
 	{path: '/contactos', component: Contactos},
-	{path: '/crear-restaurante', name:'crear-restaurante', component: RestauranteAdd}
+	{path: '/crear-restaurante', name:'crear-restaurante', component: RestauranteAdd},
+	{path: '/editar-restaurante', name:'editar-restaurante', component: RestauranteEdit}
 ];
 
 const router = new VueRouter({
