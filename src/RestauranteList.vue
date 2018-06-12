@@ -6,6 +6,14 @@
         <p>
           <router-link :to="{name:'ver-restaurante', params:{id: restaurante.id}}">Ver</router-link>
           <router-link :to="{name:'editar-restaurante', params:{id: restaurante.id}}">Editar</router-link>
+          <span v-if="showBorrar != restaurante.id">
+            <a @click="borrarRestaurante(restaurante.id)">Eliminar</a>
+          </span>
+          <span v-else>
+            <p>¿Estas seguro de borrarlo?</p>
+            <button @click="cancelarBorrado()">Cancelar</button>
+            <button @click="confirmarBorrado(restaurante.id)">Borrar</button>
+          </span>
         </p>
 			</li>
 		</ul>
@@ -22,7 +30,8 @@ export default {
   data () {
     return {
       texto: 'Pagina Restaurantes List',
-      restaurantes: null
+      restaurantes: null,
+      showBorrar: null
     }
   },
   methods:{
@@ -31,7 +40,20 @@ export default {
 			 .then((respuesta)=>{
 			 	this.restaurantes= respuesta.data.data
 			 })
-  	}
+  	},
+    borrarRestaurante(id){
+      this.showBorrar = id
+    },
+    cancelarBorrado(){
+      this.showBorrar = null
+    },
+    confirmarBorrado(id){
+      axios.get('http://localhost:8081/vueSPA/restaurantapp/slim/restaurantes-api.php/delete-restaurante/'+id)
+           .then((respuesta)=>{
+              this.borrarRestaurante = null
+              this.getRestaurantes()
+           })
+    }
   }
 }
 </script>
@@ -54,13 +76,11 @@ export default {
             }
           } 
           p{
-            display: flex;
-            justify-content:center;
-            align-items: center;
-            height: 80px;
+            font-size: 1em;
             a{
               margin-right: 15px;
               text-decoration: none;
+              cursor:pointer;
               &:hover{
                 text-decoration: underline;
               }
